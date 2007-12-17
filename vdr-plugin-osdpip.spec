@@ -14,7 +14,6 @@ URL:		http://www.magoa.net/linux/
 Source:		http://www.magoa.net/linux/files/vdr-%plugin-%version.tar.bz2
 Patch0:		osdpip-0.0.8-include.patch
 Patch1:		vdr-osdpip-0.0.8-extra-qualification.patch
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	vdr-devel >= 1.4.1-6
 BuildRequires:	libffmpeg-devel
 Requires:	vdr-abi = %vdr_abi
