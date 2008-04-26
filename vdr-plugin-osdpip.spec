@@ -2,7 +2,7 @@
 %define plugin	osdpip
 %define name	vdr-plugin-%plugin
 %define version	0.0.8
-%define rel	14
+%define rel	15
 
 Summary:	VDR plugin: OSD Picture-in-Picture
 Name:		%name
@@ -14,8 +14,11 @@ URL:		http://www.magoa.net/linux/
 Source:		http://www.magoa.net/linux/files/vdr-%plugin-%version.tar.bz2
 Patch0:		osdpip-0.0.8-include.patch
 Patch1:		vdr-osdpip-0.0.8-extra-qualification.patch
+Patch2:		osdpip-04_nocloseonmenutimeout.dpatch
+Patch3:		91_osdpip-1.5.0.dpatch
+Patch4:		osdpip-0.0.8-i18n-1.6.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-BuildRequires:	vdr-devel >= 1.4.1-6
+BuildRequires:	vdr-devel >= 1.6.0
 BuildRequires:	libffmpeg-devel
 Requires:	vdr-abi = %vdr_abi
 
@@ -36,11 +39,15 @@ well as crop dimensions.
 
 %prep
 %setup -q -n %plugin-%version
-
 %patch0 -p1 -b .include
 %patch1 -p1 -b .extra
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%vdr_plugin_prep
 
 %build
+VDR_PLUGIN_FLAGS="%vdr_plugin_flags -I$(pkg-config --cflags libavcodec)"
 %vdr_plugin_build
 
 %install
