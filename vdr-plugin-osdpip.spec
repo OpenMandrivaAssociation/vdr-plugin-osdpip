@@ -47,6 +47,9 @@ well as crop dimensions.
 %vdr_plugin_prep
 
 %build
+# needed for build on 2009.0:
+ln -sf %{_includedir}/libavcodec ffmpeg
+# needed for build on 2008.1:
 VDR_PLUGIN_FLAGS="%vdr_plugin_flags -I$(pkg-config --cflags libavcodec)"
 %vdr_plugin_build
 
