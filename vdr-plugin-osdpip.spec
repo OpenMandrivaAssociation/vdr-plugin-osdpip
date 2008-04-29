@@ -1,8 +1,8 @@
 
 %define plugin	osdpip
 %define name	vdr-plugin-%plugin
-%define version	0.0.8
-%define rel	16
+%define version	0.0.9
+%define rel	1
 
 Summary:	VDR plugin: OSD Picture-in-Picture
 Name:		%name
@@ -11,12 +11,7 @@ Release:	%mkrel %rel
 Group:		Video
 License:	GPL
 URL:		http://www.magoa.net/linux/
-Source:		http://www.magoa.net/linux/files/vdr-%plugin-%version.tar.bz2
-Patch0:		osdpip-0.0.8-include.patch
-Patch1:		vdr-osdpip-0.0.8-extra-qualification.patch
-Patch2:		osdpip-04_nocloseonmenutimeout.dpatch
-Patch3:		91_osdpip-1.5.0.dpatch
-Patch4:		osdpip-0.0.8-i18n-1.6.patch
+Source:		http://home.arcor.de/andreas.regel/files/vdr-%plugin-%version.tgz
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	vdr-devel >= 1.6.0
 BuildRequires:	libffmpeg-devel
@@ -25,25 +20,10 @@ Requires:	vdr-abi = %vdr_abi
 %description
 OSD Picture-in-Picture is a PlugIn that displays the current channel in a
 small box on the screen (default upper right corner). You can switch up and
-down now, watching the progress of the previous channel in the box. Quality is
-not too good yet, and only I-Frames are displayed.
-The plugin supports four modes:
-- greyscaled (16 shades of grey)
-- greyscaled (256 shades of grey)
-- 256 colors with fixed palette
-- 128 colors with variable palette
-They all work with an ordinary vdr installation.
-The plugin has the possibility to choose the PiP size (in the setup menu from
-predefined sizes) and position (by moving it around using the cursor keys) as
-well as crop dimensions.
+down now, watching the progress of the previous channel in the box.
 
 %prep
 %setup -q -n %plugin-%version
-%patch0 -p1 -b .include
-%patch1 -p1 -b .extra
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 %vdr_plugin_prep
 
 %build
