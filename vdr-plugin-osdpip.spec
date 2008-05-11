@@ -1,7 +1,7 @@
 
 %define plugin	osdpip
 %define name	vdr-plugin-%plugin
-%define version	0.0.9
+%define version	0.0.10
 %define rel	1
 
 Summary:	VDR plugin: OSD Picture-in-Picture
@@ -11,7 +11,7 @@ Release:	%mkrel %rel
 Group:		Video
 License:	GPL
 URL:		http://www.magoa.net/linux/
-Source:		http://home.arcor.de/andreas.regel/files/vdr-%plugin-%version.tgz
+Source:		http://www.powarman.de/files/osdpip/vdr-%plugin-%version.tgz
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	vdr-devel >= 1.6.0
 BuildRequires:	libffmpeg-devel
@@ -27,11 +27,12 @@ down now, watching the progress of the previous channel in the box.
 %vdr_plugin_prep
 
 %build
-# needed for build on 2009.0:
-ln -sf %{_includedir}/libavcodec ffmpeg
 # needed for build on 2008.1:
 VDR_PLUGIN_FLAGS="%vdr_plugin_flags -I$(pkg-config --cflags libavcodec)"
-%vdr_plugin_build
+%vdr_plugin_build \
+%if %{mdkversion} >= 200900
+	WITH_NEW_FFMPEG_HEADERS=1 # needed for build on 2009.0
+%endif
 
 %install
 rm -rf %{buildroot}
