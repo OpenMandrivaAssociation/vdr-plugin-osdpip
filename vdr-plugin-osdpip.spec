@@ -28,7 +28,7 @@ down now, watching the progress of the previous channel in the box.
 
 %build
 # needed for build on 2008.1:
-VDR_PLUGIN_FLAGS="%vdr_plugin_flags -I$(pkg-config --cflags libavcodec)"
+VDR_PLUGIN_FLAGS="%vdr_plugin_flags $(pkg-config --cflags libavcodec)"
 %vdr_plugin_build \
 %if %{mdkversion} >= 200900
 	WITH_NEW_FFMPEG_HEADERS=1 # needed for build on 2009.0
