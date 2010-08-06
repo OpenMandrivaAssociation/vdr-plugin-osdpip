@@ -28,6 +28,7 @@ down now, watching the progress of the previous channel in the box.
 %vdr_plugin_prep
 
 %build
+VDR_PLUGIN_EXTRA_FLAGS="-D__STDC_CONSTANT_MACROS"
 %vdr_plugin_build
 
 %install
