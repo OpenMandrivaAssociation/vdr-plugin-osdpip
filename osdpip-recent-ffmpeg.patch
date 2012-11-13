@@ -1,0 +1,33 @@
+commit 2a594845bb6f14c8f23ce0256aa75621d2a5d9fa
+Author: Thomas Günther <tom@toms-cafe.de>
+Date:   Sun Jun 20 15:39:19 2010 +0200
+
+    Fixed compile error with newer ffmpeg versions >= svn 20100426 (closes #345)
+
+diff --git a/HISTORY b/HISTORY
+index 5035ac4..c313c1e 100644
+--- a/HISTORY
++++ b/HISTORY
+@@ -1,6 +1,10 @@
+ VDR Plugin 'osdpip' Revision History
+ ------------------------------------
+ 
++____-__-__: Version 0.1.1
++
++- Fixed compile error with newer ffmpeg versions >= svn 20100426 (closes #345)
++
+ 2010-03-28: Version 0.1.0
+ 
+ - Moved to http://projects.vdr-developer.org/projects/show/plg-osdpip
+diff --git a/Makefile b/Makefile
+index 7ed33d6..3e7722e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -78,6 +78,7 @@ PACKAGE = vdr-$(ARCHIVE)
+ INCLUDES += -I$(VDRDIR)/include
+ 
+ DEFINES += -D_GNU_SOURCE -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
++DEFINES += -D__STDC_CONSTANT_MACROS
+ 
+ ifdef FFMDIR
+     INCLUDES += -I$(FFMDIR)/libavcodec
