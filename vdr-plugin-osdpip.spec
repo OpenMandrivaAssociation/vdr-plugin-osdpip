@@ -10,7 +10,7 @@ Version:	%version
 Release:	%mkrel %rel
 Group:		Video
 License:	GPL
-URL:		http://projects.vdr-developer.org/projects/show/plg-osdpip
+URL:		https://projects.vdr-developer.org/projects/show/plg-osdpip
 Source:		http://projects.vdr-developer.org/attachments/download/267/vdr-%plugin-%version.tgz
 Patch0:		osdpip-recent-ffmpeg.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
