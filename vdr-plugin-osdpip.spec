@@ -7,7 +7,7 @@
 Summary:	VDR plugin: OSD Picture-in-Picture
 Name:		%name
 Version:	%version
-Release:	%mkrel %rel
+Release:	%rel.1
 Group:		Video
 License:	GPL
 URL:		https://projects.vdr-developer.org/projects/show/plg-osdpip
